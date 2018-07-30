@@ -28,7 +28,7 @@ resources:
 - name: bosh-repave-repo
   type: git
   source:
-    uri: https://github.com/pivotalservices/bosh-repave.git
+    uri: https://github.com/4n3w/bosh-repave.git
     branch: master
 - name: scheduler
   type: time

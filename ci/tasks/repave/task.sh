@@ -35,7 +35,7 @@ do
   for job in $JOBS
   do
     echo "Recreating job [$job]"
-    bosh -d $DEPLOYMENT_NAME -n recreate $dryRunStatement $job
+    echo bosh -d $DEPLOYMENT_NAME -n recreate $dryRunStatement $job
   done
 
 done
