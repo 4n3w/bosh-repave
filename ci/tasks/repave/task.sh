@@ -9,6 +9,11 @@ export BOSH_ENVIRONMENT=bosh
 
 om curl -p /api/v0/deployed/products > deployed_products.json
 
+
+echo "debug moar"
+echo $DEPLOYMENTS | sed "s/,/ /g"
+echo "^^^^"
+
 # loop through deployments
 for deployment in $(echo $DEPLOYMENTS | sed "s/,/ /g")
 do
