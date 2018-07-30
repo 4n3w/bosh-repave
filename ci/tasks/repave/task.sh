@@ -12,6 +12,7 @@ om curl -p /api/v0/deployed/products > deployed_products.json
 # loop through deployments
 for deployment in $(echo $DEPLOYMENTS | sed "s/,/ /g")
 do
+  echo "deployments ...."
   DEPLOYMENT_NAME=$(jq --arg deployment "$deployment" -r '.[] | select( .type | contains($deployment)) | .guid' "deployed_products.json")
 
   jobIndexToCheck="1"
@@ -27,8 +28,10 @@ do
   # get list of vms
   if [ -z "$JOBS" ]
   then
+    echo "jobs a"
     JOBS=$(bosh -d $DEPLOYMENT_NAME --json instances -i | jq --arg jobIndexToCheck "$jobIndexToCheck" -r '.Tables[].Rows[] | select(.index==$jobIndexToCheck) | .instance | split("/")[0]')
   else
+    echo "jobs b"
     JOBS=$(echo $JOBS | sed "s/,/ /g")
   fi
 
